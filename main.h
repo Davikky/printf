@@ -33,7 +33,8 @@ typedef struct _format
 int _print(char *str);
 int print_string(va_list list);
 int print_char(va_list list);
-
+int print_integer(va_list list);
+char *itoa(long int num, int base);
 
 
 
