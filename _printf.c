@@ -1,63 +1,48 @@
 #include "main.h"
-#include <stdio.h>
-#include <stdarg.h>
 
 /**
- * _printf - produces output according to a format
- * @format: input format
+ * _printf - Produces output according to a format
+ * @format: Is a character string. The format string
+ *          is composed of zero or more directives
  *
- * Return: Number of characters printed excluding null byte
+ * Return: The number of characters printed (excluding
+ *         the null byte used to end output to strings)
  */
 
 int _printf(const char *format, ...)
 {
+	int size;
 	va_list args;
+
+	if (format == NULL)
+		return (-1);
+
+	size = _strlen(format);
+	if (size <= 0)
+		return (0);
 
 	va_start(args, format);
 
-	int output_count = 0;
+	size = handler(format, args);
+	_putchar(-1);
 
-	for (const char	*p = format; *p != '\0'; p++)
-	{
-		if (*p != '%')
-		{
-			_putchar(*p);
-			output_count++;
-		}
-		else
-		{
-			switch (*(++p))
-			{
-				case 'c': {
-						char c = (char)va_arg(args, int);
-
-						_putchar(c);
-						output_count++;
-						break;
-					}
-				case 's': {
-					char *s = va_arg(args, char *);
-
-					for (; *s != '\0'; s++)
-					{
-						_putchar(*s);
-						output_count++;
-					}
-					break;
-					}
-				case '%': {
-					_putchar('%');
-					output_count++;
-					break;
-					}
-				default: {
-					fprintf(stderr, "error: invalid conversion specifier\n");
-					va_end(args);
-					return (-1);
-					}
-			}
-		}
-	}
 	va_end(args);
-	return (output_count);
+	return (size);
+}
+
+/**
+ * _strlen - Calculate the length of a string
+ * @str: String
+ *
+ * Return: Length
+ **/
+
+int _strlen(const char *str)
+{
+	int i;
+
+	for (i = 0; str[i] != 0; i++)
+		;
+
+	return (i);
 }
