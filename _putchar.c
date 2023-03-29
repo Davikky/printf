@@ -24,8 +24,8 @@ int _putchar(char c)
 
 int buffer(char c)
 {
-	static char *buffering = NULL;
-	static int i = 0;
+	static char *buffering;
+	static int i;
 
 	if (buffering == NULL)
 	{
@@ -41,6 +41,13 @@ int buffer(char c)
 	}
 
 	if (c != -1)
+		if (buffering == NULL)
+		{
+			buffering = malloc(sizeof(char) * BUFFER_SIZE);
+			if (buffering == NULL)
+				return (-1);
+			i = 0;
+		}
 		buffering[i++] = c;
 
 	return (1);
@@ -50,11 +57,11 @@ int buffer(char c)
  * free_buffer - Frees the memory allocated for the buffer
  * @buffering: memory added
  */
-void free_buffer(char  *buffering)
+void free_buffer(char **buffering)
 {
-	if (buffering != NULL)
+	if (*buffering != NULL)
 	{
-		free(buffering);
-		buffering = NULL;
+		free(*buffering);
+		*buffering = NULL;
 	}
 }
