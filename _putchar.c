@@ -25,7 +25,7 @@ int _putchar(char c)
 int buffer(char c)
 {
 	static char *buffering;
-	static int i;
+	static int i = 0;
 
 	if (buffering == NULL)
 	{
@@ -41,13 +41,6 @@ int buffer(char c)
 	}
 
 	if (c != -1)
-		if (buffering == NULL)
-		{
-			buffering = malloc(sizeof(char) * BUFFER_SIZE);
-			if (buffering == NULL)
-				return (-1);
-			i = 0;
-		}
 		buffering[i++] = c;
 
 	return (1);
