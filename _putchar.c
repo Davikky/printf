@@ -48,8 +48,9 @@ int buffer(char c)
 
 /**
  * free_buffer - Frees the memory allocated for the buffer
- **/
-void free_buffer(void)
+ * @buffering: memory added
+ */
+void free_buffer(char  *buffering)
 {
 	if (buffering != NULL)
 	{
