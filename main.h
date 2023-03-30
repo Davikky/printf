@@ -11,7 +11,6 @@ int _printf(const char *format, ...);
 int _strlen(const char *str);
 int _putchar(char c);
 int buffer(char c);
-void free_buffer(char **buffering);
 
 /* handler.c */
 int handler(const char *str, va_list list);

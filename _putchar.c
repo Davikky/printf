@@ -1,7 +1,4 @@
 #include "main.h"
-#include <stdlib.h>
-
-#define BUFFER_SIZE 1024
 
 /**
  * _putchar - writes the character c to stdout
@@ -20,21 +17,14 @@ int _putchar(char c)
  * @c: Character
  *
  * Return: 1 on success, -1 on failure
- **/
+ */
 
 int buffer(char c)
 {
-	static char *buffering;
-	static int i = 0;
+	static char buffering[1024];
+	static int i;
 
-	if (buffering == NULL)
-	{
-		buffering = malloc(sizeof(char) * BUFFER_SIZE);
-		if (buffering == NULL)
-			return (-1);
-	}
-
-	if (c == -1 || i == BUFFER_SIZE)
+	if (c == -1 || i == 1024)
 	{
 		write(1, buffering, i);
 		i = 0;
@@ -46,15 +36,3 @@ int buffer(char c)
 	return (1);
 }
 
-/**
- * free_buffer - Frees the memory allocated for the buffer
- * @buffering: memory added
- */
-void free_buffer(char **buffering)
-{
-	if (*buffering != NULL)
-	{
-		free(*buffering);
-		*buffering = NULL;
-	}
-}
