@@ -9,11 +9,11 @@
 int print_binary(va_list list)
 {
 	char *p_buff;
-	int size;
+	int length;
 
 	p_buff = itoa(va_arg(list, unsigned int), 2);
 
-	size = _print(p_buff);
+	length = _print(p_buff);
 
-	return (size);
+	return (length);
 }

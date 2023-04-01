@@ -35,8 +35,17 @@ int print_char(va_list list);
 int print_integer(va_list list);
 char *itoa(long int num, int base);
 int print_binary(va_list list);
-
-
+int print_unsigned(va_list list);
+int print_octal(va_list list);
+int print_hexadecimal_low(va_list list);
+int is_lowercase(char);
+int print_hexadecimal_upp(va_list list);
+char *string_to_upper(char *);
+int print_pointer(va_list list);
+int _strcmp(char *s1, char *s2);
+int  print_rev_string(va_list list);
+int rot13(char *s);
+int print_rot(va_list list);
 
 
 #endif /* MAIN_H */
